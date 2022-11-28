@@ -23,6 +23,20 @@ def binary_search(list2, target):
     return None
 
 
+def binary_recursive_search(list3, target):
+    if len(list3) == 0:
+        return False
+    else:
+        mid_point = len(list3) // 2
+        if list3[mid_point] == target:
+            return True
+        else:
+            if list3[mid_point] < target:
+                return binary_recursive_search(list3[mid_point + 1:], target)
+            else:
+                return binary_recursive_search(list3[:mid_point], target)
+
+
 def verify(index):
     if index is not None:
         print("Index found at is: ", index)
@@ -31,9 +45,9 @@ def verify(index):
 
 
 if __name__ == '__main__':
-    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     result = linear_search(numbers, 10)
-    result1 = binary_search(numbers, 1)
-    verify(result1)
-
-
+    result2 = binary_search(numbers, 1)
+    result1 = binary_recursive_search(numbers, 15)
+    # verify(result1)
+    print(result1)
